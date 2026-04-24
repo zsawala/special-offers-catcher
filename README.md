@@ -1,1 +1,0 @@
-# special-offers-catcher

@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -12,6 +13,7 @@ import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './auth.guard';
 import { CreateUserResponseDto } from 'src/users/dtos/create-user-response.dto';
 import { plainToInstance } from 'class-transformer';
+import { RefreshDto } from './dto/refresh.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -28,9 +30,15 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('refresh')
   refresh(
-    @Body('refreshToken') refreshToken: string,
+    @Body() refreshDto: RefreshDto,
   ): Promise<{ accessToken: string; refreshToken: string }> {
-    return this.authService.refresh(refreshToken);
+    return this.authService.refresh(refreshDto.refreshToken);
+  }
+
+  @Delete('logout')
+  @UseGuards(AuthGuard)
+  async logout(): Promise<void> {
+    return this.authService.logout();
   }
 
   @Get('profile')

@@ -97,4 +97,11 @@ export class AuthService {
       refreshToken: refreshToken,
     };
   }
+
+  async logout(): Promise<void> {
+    await this.prismaService.user.update({
+      where: { id: 1 },
+      data: { refreshToken: null },
+    });
+  }
 }

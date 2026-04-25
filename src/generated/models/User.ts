@@ -38,6 +38,7 @@ export type UserMinAggregateOutputType = {
   id: number | null
   email: string | null
   passwordHash: string | null
+  refreshToken: string | null
   name: string | null
 }
 
@@ -45,6 +46,7 @@ export type UserMaxAggregateOutputType = {
   id: number | null
   email: string | null
   passwordHash: string | null
+  refreshToken: string | null
   name: string | null
 }
 
@@ -52,6 +54,7 @@ export type UserCountAggregateOutputType = {
   id: number
   email: number
   passwordHash: number
+  refreshToken: number
   name: number
   _all: number
 }
@@ -69,6 +72,7 @@ export type UserMinAggregateInputType = {
   id?: true
   email?: true
   passwordHash?: true
+  refreshToken?: true
   name?: true
 }
 
@@ -76,6 +80,7 @@ export type UserMaxAggregateInputType = {
   id?: true
   email?: true
   passwordHash?: true
+  refreshToken?: true
   name?: true
 }
 
@@ -83,6 +88,7 @@ export type UserCountAggregateInputType = {
   id?: true
   email?: true
   passwordHash?: true
+  refreshToken?: true
   name?: true
   _all?: true
 }
@@ -177,6 +183,7 @@ export type UserGroupByOutputType = {
   id: number
   email: string
   passwordHash: string
+  refreshToken: string | null
   name: string | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
@@ -207,6 +214,7 @@ export type UserWhereInput = {
   id?: Prisma.IntFilter<"User"> | number
   email?: Prisma.StringFilter<"User"> | string
   passwordHash?: Prisma.StringFilter<"User"> | string
+  refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringNullableFilter<"User"> | string | null
   offers?: Prisma.OfferListRelationFilter
 }
@@ -215,6 +223,7 @@ export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
+  refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   offers?: Prisma.OfferOrderByRelationAggregateInput
 }
@@ -223,17 +232,19 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   email?: string
   passwordHash?: string
+  refreshToken?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringNullableFilter<"User"> | string | null
   offers?: Prisma.OfferListRelationFilter
-}, "id" | "email" | "passwordHash">
+}, "id" | "email" | "passwordHash" | "refreshToken">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
+  refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
@@ -249,12 +260,14 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   passwordHash?: Prisma.StringWithAggregatesFilter<"User"> | string
+  refreshToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
   email: string
   passwordHash: string
+  refreshToken?: string | null
   name?: string | null
   offers?: Prisma.OfferCreateNestedManyWithoutUsersInput
 }
@@ -263,6 +276,7 @@ export type UserUncheckedCreateInput = {
   id?: number
   email: string
   passwordHash: string
+  refreshToken?: string | null
   name?: string | null
   offers?: Prisma.OfferUncheckedCreateNestedManyWithoutUsersInput
 }
@@ -270,6 +284,7 @@ export type UserUncheckedCreateInput = {
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   offers?: Prisma.OfferUpdateManyWithoutUsersNestedInput
 }
@@ -278,6 +293,7 @@ export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   offers?: Prisma.OfferUncheckedUpdateManyWithoutUsersNestedInput
 }
@@ -286,12 +302,14 @@ export type UserCreateManyInput = {
   id?: number
   email: string
   passwordHash: string
+  refreshToken?: string | null
   name?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -299,6 +317,7 @@ export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -306,6 +325,7 @@ export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
+  refreshToken?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
@@ -317,6 +337,7 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
+  refreshToken?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
@@ -324,6 +345,7 @@ export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
+  refreshToken?: Prisma.SortOrder
   name?: Prisma.SortOrder
 }
 
@@ -398,6 +420,7 @@ export type UserUncheckedUpdateManyWithoutOffersNestedInput = {
 export type UserCreateWithoutOffersInput = {
   email: string
   passwordHash: string
+  refreshToken?: string | null
   name?: string | null
 }
 
@@ -405,6 +428,7 @@ export type UserUncheckedCreateWithoutOffersInput = {
   id?: number
   email: string
   passwordHash: string
+  refreshToken?: string | null
   name?: string | null
 }
 
@@ -436,12 +460,14 @@ export type UserScalarWhereInput = {
   id?: Prisma.IntFilter<"User"> | number
   email?: Prisma.StringFilter<"User"> | string
   passwordHash?: Prisma.StringFilter<"User"> | string
+  refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringNullableFilter<"User"> | string | null
 }
 
 export type UserUpdateWithoutOffersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -449,6 +475,7 @@ export type UserUncheckedUpdateWithoutOffersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -456,6 +483,7 @@ export type UserUncheckedUpdateManyWithoutOffersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -494,6 +522,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   email?: boolean
   passwordHash?: boolean
+  refreshToken?: boolean
   name?: boolean
   offers?: boolean | Prisma.User$offersArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -503,6 +532,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   email?: boolean
   passwordHash?: boolean
+  refreshToken?: boolean
   name?: boolean
 }, ExtArgs["result"]["user"]>
 
@@ -510,6 +540,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   email?: boolean
   passwordHash?: boolean
+  refreshToken?: boolean
   name?: boolean
 }, ExtArgs["result"]["user"]>
 
@@ -517,10 +548,11 @@ export type UserSelectScalar = {
   id?: boolean
   email?: boolean
   passwordHash?: boolean
+  refreshToken?: boolean
   name?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "passwordHash" | "name", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "passwordHash" | "refreshToken" | "name", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   offers?: boolean | Prisma.User$offersArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -537,6 +569,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: number
     email: string
     passwordHash: string
+    refreshToken: string | null
     name: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
@@ -965,6 +998,7 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'Int'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly passwordHash: Prisma.FieldRef<"User", 'String'>
+  readonly refreshToken: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
 }
     

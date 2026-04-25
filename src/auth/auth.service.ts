@@ -62,6 +62,14 @@ export class AuthService {
       throw new NotFoundException('User not found');
     }
 
+    if (user.refreshToken === null) {
+      throw new UnauthorizedException('No refresh token found');
+    }
+
+    if (!(await bcrypt.compare(token, user.refreshToken))) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
     return this.generateToken(user);
   }
 
@@ -70,13 +78,23 @@ export class AuthService {
   ): Promise<{ accessToken: string; refreshToken: string }> {
     const payload = { sub: user.id, user_id: user.id, email: user.email };
 
+    const refreshToken = await this.jwtService.signAsync(payload, {
+      expiresIn: '7d',
+    });
+    const accessToken = await this.jwtService.signAsync(payload, {
+      expiresIn: '1h',
+    });
+
+    const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+
+    await this.prismaService.user.update({
+      where: { id: user.id },
+      data: { refreshToken: hashedRefreshToken },
+    });
+
     return {
-      accessToken: await this.jwtService.signAsync(payload, {
-        expiresIn: '1h',
-      }),
-      refreshToken: await this.jwtService.signAsync(payload, {
-        expiresIn: '7d',
-      }),
+      accessToken: accessToken,
+      refreshToken: refreshToken,
     };
   }
 }

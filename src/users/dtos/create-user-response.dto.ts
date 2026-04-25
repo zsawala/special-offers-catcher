@@ -7,4 +7,7 @@ export class CreateUserResponseDto {
 
   @Exclude()
   passwordHash!: string;
+
+  @Exclude()
+  refreshToken?: string;
 }

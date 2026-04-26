@@ -30,7 +30,6 @@ import { PrismaModule } from './prisma/prisma.module';
       }),
     }),
     PrismaModule,
-    UsersModule,
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],
@@ -40,6 +39,7 @@ import { PrismaModule } from './prisma/prisma.module';
         signOptions: { expiresIn: '60s' },
       }),
     }),
+    UsersModule,
     AuthModule,
     OffersModule,
   ],

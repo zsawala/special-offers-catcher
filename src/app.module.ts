@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import * as Joi from 'joi';
 import authConfig from './config/auth.config';
 import { JwtModule } from '@nestjs/jwt';
+import { OffersModule } from './offers/offers.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -27,6 +29,7 @@ import { JwtModule } from '@nestjs/jwt';
         JWT_SECRET: Joi.string().base64().required(),
       }),
     }),
+    PrismaModule,
     UsersModule,
     JwtModule.registerAsync({
       global: true,
@@ -38,6 +41,7 @@ import { JwtModule } from '@nestjs/jwt';
       }),
     }),
     AuthModule,
+    OffersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

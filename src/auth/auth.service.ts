@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/generated/browser';
 
@@ -73,6 +73,15 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  async logout(): Promise<void> {
+    await this.prismaService.user.update({
+      where: { id: 1 },
+      data: { refreshToken: null },
+    });
+  }
+
+  // PRIVATE
+
   private async generateToken(
     user: User,
   ): Promise<{ accessToken: string; refreshToken: string }> {
@@ -96,12 +105,5 @@ export class AuthService {
       accessToken: accessToken,
       refreshToken: refreshToken,
     };
-  }
-
-  async logout(): Promise<void> {
-    await this.prismaService.user.update({
-      where: { id: 1 },
-      data: { refreshToken: null },
-    });
   }
 }

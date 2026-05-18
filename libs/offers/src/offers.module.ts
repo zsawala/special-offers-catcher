@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { OffersService } from './offers.service';
-import { UserMapper } from '../../users/src/domain/user.mapper';
+import { OfferMapper } from './domain/offer.mapper';
 
 @Module({
-  providers: [OffersService, UserMapper],
+  providers: [OffersService, OfferMapper],
 })
 export class OffersModule {}

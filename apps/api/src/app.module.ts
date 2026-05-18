@@ -10,7 +10,7 @@ import * as Joi from 'joi';
 import authConfig from '../../../libs/config/auth.config';
 import { JwtModule } from '@nestjs/jwt';
 import { OffersModule } from '../../../libs/offers/src/offers.module';
-import { PrismaModule } from './prisma/prisma.module';
+import { PrismaModule } from '../../../libs/prisma/src/prisma.module';
 
 @Module({
   imports: [

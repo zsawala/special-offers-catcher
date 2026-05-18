@@ -1,4 +1,4 @@
-import { User } from 'src/generated/client';
+import { User } from '../../../prisma/generated/client';
 import { UserEntity } from './user.entity';
 import { Injectable } from '@nestjs/common';
 

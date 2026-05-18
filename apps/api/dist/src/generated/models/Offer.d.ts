@@ -1,0 +1,556 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type OfferModel = runtime.Types.Result.DefaultSelection<Prisma.$OfferPayload>;
+export type AggregateOffer = {
+    _count: OfferCountAggregateOutputType | null;
+    _avg: OfferAvgAggregateOutputType | null;
+    _sum: OfferSumAggregateOutputType | null;
+    _min: OfferMinAggregateOutputType | null;
+    _max: OfferMaxAggregateOutputType | null;
+};
+export type OfferAvgAggregateOutputType = {
+    price: number | null;
+};
+export type OfferSumAggregateOutputType = {
+    price: number | null;
+};
+export type OfferMinAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    description: string | null;
+    price: number | null;
+};
+export type OfferMaxAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    description: string | null;
+    price: number | null;
+};
+export type OfferCountAggregateOutputType = {
+    id: number;
+    title: number;
+    description: number;
+    price: number;
+    _all: number;
+};
+export type OfferAvgAggregateInputType = {
+    price?: true;
+};
+export type OfferSumAggregateInputType = {
+    price?: true;
+};
+export type OfferMinAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    price?: true;
+};
+export type OfferMaxAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    price?: true;
+};
+export type OfferCountAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    price?: true;
+    _all?: true;
+};
+export type OfferAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.OfferWhereInput;
+    orderBy?: Prisma.OfferOrderByWithRelationInput | Prisma.OfferOrderByWithRelationInput[];
+    cursor?: Prisma.OfferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | OfferCountAggregateInputType;
+    _avg?: OfferAvgAggregateInputType;
+    _sum?: OfferSumAggregateInputType;
+    _min?: OfferMinAggregateInputType;
+    _max?: OfferMaxAggregateInputType;
+};
+export type GetOfferAggregateType<T extends OfferAggregateArgs> = {
+    [P in keyof T & keyof AggregateOffer]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateOffer[P]> : Prisma.GetScalarType<T[P], AggregateOffer[P]>;
+};
+export type OfferGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.OfferWhereInput;
+    orderBy?: Prisma.OfferOrderByWithAggregationInput | Prisma.OfferOrderByWithAggregationInput[];
+    by: Prisma.OfferScalarFieldEnum[] | Prisma.OfferScalarFieldEnum;
+    having?: Prisma.OfferScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: OfferCountAggregateInputType | true;
+    _avg?: OfferAvgAggregateInputType;
+    _sum?: OfferSumAggregateInputType;
+    _min?: OfferMinAggregateInputType;
+    _max?: OfferMaxAggregateInputType;
+};
+export type OfferGroupByOutputType = {
+    id: string;
+    title: string;
+    description: string | null;
+    price: number;
+    _count: OfferCountAggregateOutputType | null;
+    _avg: OfferAvgAggregateOutputType | null;
+    _sum: OfferSumAggregateOutputType | null;
+    _min: OfferMinAggregateOutputType | null;
+    _max: OfferMaxAggregateOutputType | null;
+};
+export type GetOfferGroupByPayload<T extends OfferGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<OfferGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof OfferGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], OfferGroupByOutputType[P]> : Prisma.GetScalarType<T[P], OfferGroupByOutputType[P]>;
+}>>;
+export type OfferWhereInput = {
+    AND?: Prisma.OfferWhereInput | Prisma.OfferWhereInput[];
+    OR?: Prisma.OfferWhereInput[];
+    NOT?: Prisma.OfferWhereInput | Prisma.OfferWhereInput[];
+    id?: Prisma.StringFilter<"Offer"> | string;
+    title?: Prisma.StringFilter<"Offer"> | string;
+    description?: Prisma.StringNullableFilter<"Offer"> | string | null;
+    price?: Prisma.FloatFilter<"Offer"> | number;
+    users?: Prisma.UserListRelationFilter;
+};
+export type OfferOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrderInput | Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+    users?: Prisma.UserOrderByRelationAggregateInput;
+};
+export type OfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.OfferWhereInput | Prisma.OfferWhereInput[];
+    OR?: Prisma.OfferWhereInput[];
+    NOT?: Prisma.OfferWhereInput | Prisma.OfferWhereInput[];
+    title?: Prisma.StringFilter<"Offer"> | string;
+    description?: Prisma.StringNullableFilter<"Offer"> | string | null;
+    price?: Prisma.FloatFilter<"Offer"> | number;
+    users?: Prisma.UserListRelationFilter;
+}, "id">;
+export type OfferOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrderInput | Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+    _count?: Prisma.OfferCountOrderByAggregateInput;
+    _avg?: Prisma.OfferAvgOrderByAggregateInput;
+    _max?: Prisma.OfferMaxOrderByAggregateInput;
+    _min?: Prisma.OfferMinOrderByAggregateInput;
+    _sum?: Prisma.OfferSumOrderByAggregateInput;
+};
+export type OfferScalarWhereWithAggregatesInput = {
+    AND?: Prisma.OfferScalarWhereWithAggregatesInput | Prisma.OfferScalarWhereWithAggregatesInput[];
+    OR?: Prisma.OfferScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.OfferScalarWhereWithAggregatesInput | Prisma.OfferScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"Offer"> | string;
+    title?: Prisma.StringWithAggregatesFilter<"Offer"> | string;
+    description?: Prisma.StringNullableWithAggregatesFilter<"Offer"> | string | null;
+    price?: Prisma.FloatWithAggregatesFilter<"Offer"> | number;
+};
+export type OfferCreateInput = {
+    id?: string;
+    title: string;
+    description?: string | null;
+    price: number;
+    users?: Prisma.UserCreateNestedManyWithoutOffersInput;
+};
+export type OfferUncheckedCreateInput = {
+    id?: string;
+    title: string;
+    description?: string | null;
+    price: number;
+    users?: Prisma.UserUncheckedCreateNestedManyWithoutOffersInput;
+};
+export type OfferUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+    users?: Prisma.UserUpdateManyWithoutOffersNestedInput;
+};
+export type OfferUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+    users?: Prisma.UserUncheckedUpdateManyWithoutOffersNestedInput;
+};
+export type OfferCreateManyInput = {
+    id?: string;
+    title: string;
+    description?: string | null;
+    price: number;
+};
+export type OfferUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+};
+export type OfferUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+};
+export type OfferListRelationFilter = {
+    every?: Prisma.OfferWhereInput;
+    some?: Prisma.OfferWhereInput;
+    none?: Prisma.OfferWhereInput;
+};
+export type OfferOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type OfferCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+};
+export type OfferAvgOrderByAggregateInput = {
+    price?: Prisma.SortOrder;
+};
+export type OfferMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+};
+export type OfferMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    price?: Prisma.SortOrder;
+};
+export type OfferSumOrderByAggregateInput = {
+    price?: Prisma.SortOrder;
+};
+export type OfferCreateNestedManyWithoutUsersInput = {
+    create?: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput> | Prisma.OfferCreateWithoutUsersInput[] | Prisma.OfferUncheckedCreateWithoutUsersInput[];
+    connectOrCreate?: Prisma.OfferCreateOrConnectWithoutUsersInput | Prisma.OfferCreateOrConnectWithoutUsersInput[];
+    connect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+};
+export type OfferUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput> | Prisma.OfferCreateWithoutUsersInput[] | Prisma.OfferUncheckedCreateWithoutUsersInput[];
+    connectOrCreate?: Prisma.OfferCreateOrConnectWithoutUsersInput | Prisma.OfferCreateOrConnectWithoutUsersInput[];
+    connect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+};
+export type OfferUpdateManyWithoutUsersNestedInput = {
+    create?: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput> | Prisma.OfferCreateWithoutUsersInput[] | Prisma.OfferUncheckedCreateWithoutUsersInput[];
+    connectOrCreate?: Prisma.OfferCreateOrConnectWithoutUsersInput | Prisma.OfferCreateOrConnectWithoutUsersInput[];
+    upsert?: Prisma.OfferUpsertWithWhereUniqueWithoutUsersInput | Prisma.OfferUpsertWithWhereUniqueWithoutUsersInput[];
+    set?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    disconnect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    delete?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    connect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    update?: Prisma.OfferUpdateWithWhereUniqueWithoutUsersInput | Prisma.OfferUpdateWithWhereUniqueWithoutUsersInput[];
+    updateMany?: Prisma.OfferUpdateManyWithWhereWithoutUsersInput | Prisma.OfferUpdateManyWithWhereWithoutUsersInput[];
+    deleteMany?: Prisma.OfferScalarWhereInput | Prisma.OfferScalarWhereInput[];
+};
+export type OfferUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput> | Prisma.OfferCreateWithoutUsersInput[] | Prisma.OfferUncheckedCreateWithoutUsersInput[];
+    connectOrCreate?: Prisma.OfferCreateOrConnectWithoutUsersInput | Prisma.OfferCreateOrConnectWithoutUsersInput[];
+    upsert?: Prisma.OfferUpsertWithWhereUniqueWithoutUsersInput | Prisma.OfferUpsertWithWhereUniqueWithoutUsersInput[];
+    set?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    disconnect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    delete?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    connect?: Prisma.OfferWhereUniqueInput | Prisma.OfferWhereUniqueInput[];
+    update?: Prisma.OfferUpdateWithWhereUniqueWithoutUsersInput | Prisma.OfferUpdateWithWhereUniqueWithoutUsersInput[];
+    updateMany?: Prisma.OfferUpdateManyWithWhereWithoutUsersInput | Prisma.OfferUpdateManyWithWhereWithoutUsersInput[];
+    deleteMany?: Prisma.OfferScalarWhereInput | Prisma.OfferScalarWhereInput[];
+};
+export type FloatFieldUpdateOperationsInput = {
+    set?: number;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+};
+export type OfferCreateWithoutUsersInput = {
+    id?: string;
+    title: string;
+    description?: string | null;
+    price: number;
+};
+export type OfferUncheckedCreateWithoutUsersInput = {
+    id?: string;
+    title: string;
+    description?: string | null;
+    price: number;
+};
+export type OfferCreateOrConnectWithoutUsersInput = {
+    where: Prisma.OfferWhereUniqueInput;
+    create: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput>;
+};
+export type OfferUpsertWithWhereUniqueWithoutUsersInput = {
+    where: Prisma.OfferWhereUniqueInput;
+    update: Prisma.XOR<Prisma.OfferUpdateWithoutUsersInput, Prisma.OfferUncheckedUpdateWithoutUsersInput>;
+    create: Prisma.XOR<Prisma.OfferCreateWithoutUsersInput, Prisma.OfferUncheckedCreateWithoutUsersInput>;
+};
+export type OfferUpdateWithWhereUniqueWithoutUsersInput = {
+    where: Prisma.OfferWhereUniqueInput;
+    data: Prisma.XOR<Prisma.OfferUpdateWithoutUsersInput, Prisma.OfferUncheckedUpdateWithoutUsersInput>;
+};
+export type OfferUpdateManyWithWhereWithoutUsersInput = {
+    where: Prisma.OfferScalarWhereInput;
+    data: Prisma.XOR<Prisma.OfferUpdateManyMutationInput, Prisma.OfferUncheckedUpdateManyWithoutUsersInput>;
+};
+export type OfferScalarWhereInput = {
+    AND?: Prisma.OfferScalarWhereInput | Prisma.OfferScalarWhereInput[];
+    OR?: Prisma.OfferScalarWhereInput[];
+    NOT?: Prisma.OfferScalarWhereInput | Prisma.OfferScalarWhereInput[];
+    id?: Prisma.StringFilter<"Offer"> | string;
+    title?: Prisma.StringFilter<"Offer"> | string;
+    description?: Prisma.StringNullableFilter<"Offer"> | string | null;
+    price?: Prisma.FloatFilter<"Offer"> | number;
+};
+export type OfferUpdateWithoutUsersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+};
+export type OfferUncheckedUpdateWithoutUsersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+};
+export type OfferUncheckedUpdateManyWithoutUsersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    price?: Prisma.FloatFieldUpdateOperationsInput | number;
+};
+export type OfferCountOutputType = {
+    users: number;
+};
+export type OfferCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    users?: boolean | OfferCountOutputTypeCountUsersArgs;
+};
+export type OfferCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferCountOutputTypeSelect<ExtArgs> | null;
+};
+export type OfferCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.UserWhereInput;
+};
+export type OfferSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    price?: boolean;
+    users?: boolean | Prisma.Offer$usersArgs<ExtArgs>;
+    _count?: boolean | Prisma.OfferCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["offer"]>;
+export type OfferSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    price?: boolean;
+}, ExtArgs["result"]["offer"]>;
+export type OfferSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    price?: boolean;
+}, ExtArgs["result"]["offer"]>;
+export type OfferSelectScalar = {
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    price?: boolean;
+};
+export type OfferOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "price", ExtArgs["result"]["offer"]>;
+export type OfferInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    users?: boolean | Prisma.Offer$usersArgs<ExtArgs>;
+    _count?: boolean | Prisma.OfferCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type OfferIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type OfferIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type $OfferPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "Offer";
+    objects: {
+        users: Prisma.$UserPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        title: string;
+        description: string | null;
+        price: number;
+    }, ExtArgs["result"]["offer"]>;
+    composites: {};
+};
+export type OfferGetPayload<S extends boolean | null | undefined | OfferDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$OfferPayload, S>;
+export type OfferCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<OfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: OfferCountAggregateInputType | true;
+};
+export interface OfferDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['Offer'];
+        meta: {
+            name: 'Offer';
+        };
+    };
+    findUnique<T extends OfferFindUniqueArgs>(args: Prisma.SelectSubset<T, OfferFindUniqueArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends OfferFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, OfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends OfferFindFirstArgs>(args?: Prisma.SelectSubset<T, OfferFindFirstArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends OfferFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, OfferFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends OfferFindManyArgs>(args?: Prisma.SelectSubset<T, OfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends OfferCreateArgs>(args: Prisma.SelectSubset<T, OfferCreateArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends OfferCreateManyArgs>(args?: Prisma.SelectSubset<T, OfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends OfferCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, OfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends OfferDeleteArgs>(args: Prisma.SelectSubset<T, OfferDeleteArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends OfferUpdateArgs>(args: Prisma.SelectSubset<T, OfferUpdateArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends OfferDeleteManyArgs>(args?: Prisma.SelectSubset<T, OfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends OfferUpdateManyArgs>(args: Prisma.SelectSubset<T, OfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends OfferUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, OfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends OfferUpsertArgs>(args: Prisma.SelectSubset<T, OfferUpsertArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends OfferCountArgs>(args?: Prisma.Subset<T, OfferCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], OfferCountAggregateOutputType> : number>;
+    aggregate<T extends OfferAggregateArgs>(args: Prisma.Subset<T, OfferAggregateArgs>): Prisma.PrismaPromise<GetOfferAggregateType<T>>;
+    groupBy<T extends OfferGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: OfferGroupByArgs['orderBy'];
+    } : {
+        orderBy?: OfferGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, OfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: OfferFieldRefs;
+}
+export interface Prisma__OfferClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    users<T extends Prisma.Offer$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Offer$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface OfferFieldRefs {
+    readonly id: Prisma.FieldRef<"Offer", 'String'>;
+    readonly title: Prisma.FieldRef<"Offer", 'String'>;
+    readonly description: Prisma.FieldRef<"Offer", 'String'>;
+    readonly price: Prisma.FieldRef<"Offer", 'Float'>;
+}
+export type OfferFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where: Prisma.OfferWhereUniqueInput;
+};
+export type OfferFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where: Prisma.OfferWhereUniqueInput;
+};
+export type OfferFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where?: Prisma.OfferWhereInput;
+    orderBy?: Prisma.OfferOrderByWithRelationInput | Prisma.OfferOrderByWithRelationInput[];
+    cursor?: Prisma.OfferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.OfferScalarFieldEnum | Prisma.OfferScalarFieldEnum[];
+};
+export type OfferFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where?: Prisma.OfferWhereInput;
+    orderBy?: Prisma.OfferOrderByWithRelationInput | Prisma.OfferOrderByWithRelationInput[];
+    cursor?: Prisma.OfferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.OfferScalarFieldEnum | Prisma.OfferScalarFieldEnum[];
+};
+export type OfferFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where?: Prisma.OfferWhereInput;
+    orderBy?: Prisma.OfferOrderByWithRelationInput | Prisma.OfferOrderByWithRelationInput[];
+    cursor?: Prisma.OfferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.OfferScalarFieldEnum | Prisma.OfferScalarFieldEnum[];
+};
+export type OfferCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.OfferCreateInput, Prisma.OfferUncheckedCreateInput>;
+};
+export type OfferCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.OfferCreateManyInput | Prisma.OfferCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type OfferCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    data: Prisma.OfferCreateManyInput | Prisma.OfferCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type OfferUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.OfferUpdateInput, Prisma.OfferUncheckedUpdateInput>;
+    where: Prisma.OfferWhereUniqueInput;
+};
+export type OfferUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.OfferUpdateManyMutationInput, Prisma.OfferUncheckedUpdateManyInput>;
+    where?: Prisma.OfferWhereInput;
+    limit?: number;
+};
+export type OfferUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.OfferUpdateManyMutationInput, Prisma.OfferUncheckedUpdateManyInput>;
+    where?: Prisma.OfferWhereInput;
+    limit?: number;
+};
+export type OfferUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where: Prisma.OfferWhereUniqueInput;
+    create: Prisma.XOR<Prisma.OfferCreateInput, Prisma.OfferUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.OfferUpdateInput, Prisma.OfferUncheckedUpdateInput>;
+};
+export type OfferDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+    where: Prisma.OfferWhereUniqueInput;
+};
+export type OfferDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.OfferWhereInput;
+    limit?: number;
+};
+export type Offer$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.UserSelect<ExtArgs> | null;
+    omit?: Prisma.UserOmit<ExtArgs> | null;
+    include?: Prisma.UserInclude<ExtArgs> | null;
+    where?: Prisma.UserWhereInput;
+    orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[];
+    cursor?: Prisma.UserWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[];
+};
+export type OfferDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.OfferSelect<ExtArgs> | null;
+    omit?: Prisma.OfferOmit<ExtArgs> | null;
+    include?: Prisma.OfferInclude<ExtArgs> | null;
+};

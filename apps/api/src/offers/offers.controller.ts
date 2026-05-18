@@ -5,9 +5,9 @@ import {
   ParseUUIDPipe,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { OfferEntity } from '../../../../libs/offers/src/offers/domain/offer.entity';
-import { OffersService } from '../../../../libs/offers/src/offers/offers.service';
+import { AuthGuard } from '../../src/auth/guards/auth.guard';
+import { OfferEntity } from '@app/offers/domain/offer.entity';
+import { OffersService } from '@app/offers/offers.service';
 
 @Controller('offers')
 @UseGuards(AuthGuard)
@@ -16,11 +16,11 @@ export class OffersController {
 
   @Get()
   async getOffers(): Promise<OfferEntity[]> {
-    return this.offerService.getOffers();
+    return (await this.offerService.getOffers()) as OfferEntity[];
   }
 
   @Get('/:id')
   async getOffer(@Param('id', ParseUUIDPipe) id: string): Promise<OfferEntity> {
-    return this.offerService.getOffer(id);
+    return (await this.offerService.getOffer(id)) as OfferEntity;
   }
 }

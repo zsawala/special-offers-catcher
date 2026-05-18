@@ -11,11 +11,11 @@ import {
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './guards/auth.guard';
-import { CreateUserResponseDto } from 'src/users/dtos/create-user-response.dto';
+import { CreateUserResponseDto } from '../../src/users/dtos/create-user-response.dto';
 import { plainToInstance } from 'class-transformer';
 import { RefreshDto } from './dto/refresh.dto';
 import { CurrentUser } from './decorators/current-user.decorator';
-import type { UserEntity } from 'src/users/domain/user.entity';
+import type { UserEntity } from '@app/users/domain/user.entity';
 
 @Controller('auth')
 export class AuthController {

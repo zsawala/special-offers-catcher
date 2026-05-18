@@ -1,4 +1,4 @@
-import { Offer } from 'src/generated/client';
+import { Offer } from '@app/prisma/generated/client';
 import { OfferEntity } from './offer.entity';
 
 export class OfferMapper {

@@ -1,8 +1,48 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/api/src",
+  "monorepo": true,
+  "root": "apps/api",
   "compilerOptions": {
     "deleteOutDir": true
+  },
+  "projects": {
+    "api": {
+      "type": "application",
+      "root": "apps/api",
+      "entryFile": "main",
+      "sourceRoot": "apps/api/src"
+    },
+    "worker": {
+      "type": "application",
+      "root": "apps/worker",
+      "entryFile": "index",
+      "sourceRoot": "apps/worker/src"
+    },
+    "users": {
+      "type": "library",
+      "root": "libs/users",
+      "entryFile": "index",
+      "sourceRoot": "libs/users/src"
+    },
+    "offers": {
+      "type": "library",
+      "root": "libs/offers",
+      "entryFile": "index",
+      "sourceRoot": "libs/offers/src"
+    },
+    "config": {
+      "type": "library",
+      "root": "libs/config",
+      "entryFile": "index",
+      "sourceRoot": "libs/config/src"
+    },
+    "prisma": {
+      "type": "library",
+      "root": "libs/prisma",
+      "entryFile": "index",
+      "sourceRoot": "libs/prisma/src"
+    }
   }
 }

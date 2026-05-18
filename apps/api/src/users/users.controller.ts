@@ -8,13 +8,13 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { UsersService } from '../../../../libs/users/src/users.service';
-import { User } from '../../../../libs/prisma/generated/client';
+import { UsersService } from '@app/users/users.service';
+import { User } from '@app/prisma/generated/client';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { plainToInstance } from 'class-transformer';
 import { CreateUserResponseDto } from './dtos/create-user-response.dto';
-import { UserEntity } from '../../../../libs/users/src/domain/user.entity';
+import { UserEntity } from '@app/users/domain/user.entity';
 import { AuthGuard } from '../auth/guards/auth.guard';
 
 @Controller('users')
@@ -22,8 +22,8 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  findAll(): Promise<UserEntity[]> {
-    return this.usersService.getUsers();
+  async findAll(): Promise<UserEntity[]> {
+    return await this.usersService.getUsers();
   }
 
   @Post()

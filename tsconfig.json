@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "resolvePackageJsonExports": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,
@@ -14,6 +13,17 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@app/prisma": ["libs/prisma/src"],
+      "@app/prisma/*": ["libs/prisma/src/*"],
+      "@app/prisma/generated/*": ["libs/prisma/generated/*"],
+      "@app/offers": ["libs/offers/src"],
+      "@app/offers/*": ["libs/offers/src/*"],
+      "@app/users": ["libs/users/src"],
+      "@app/users/*": ["libs/users/src/*"],
+      "@app/config": ["libs/config/src"],
+      "@app/config/*": ["libs/config/src/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
